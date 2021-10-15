@@ -1,0 +1,182 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Bellier Rendue court
+% Version 1.0 (11/09/2021)
+%
+% Auteur original:
+% Benjamin Bellier
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Saved with string encoding Unicode (UTF-8)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[a4paper, 10pt, twoside]{article}
+
+%----------------------------------------------------------------------------------------
+%	    DIFFÉRENTS PACKAGES ET CONFIGURATIONS NÉCESSAIRES
+%----------------------------------------------------------------------------------------
+
+\usepackage[round]{natbib} % Parenthèses autour des citations, remplacer par des carrés pour les crochets
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc} % Support des caractères avec accents
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[pdftex]{graphicx} % Requis pour afficher des images
+\usepackage{graphics} % Requis pour afficher des images
+\usepackage{color} % Requis pour des couleurs personnalisées
+\usepackage{amsmath, amssymb, theorem} % Math packages
+\usepackage{listing} % Requis pour inclure des extraits de codes
+\usepackage{booktabs} % Requis pour de meilleurs règles horizontales dans les tableaux
+\usepackage{xspace} % Fournit la capacité d'utiliser des espace intelligent qui sont utilisé dans \universite et \departement
+\usepackage[printonlyused, withpage]{acronym} % inclus une list d'acronymes
+\usepackage{rotating} % permet aux tableaux et au figures d'être tourné
+\definecolor{couleurliens}{rgb}{0.,0.,0.} % définition de la couleur des liens
+\usepackage[pdftex,colorlinks=true,urlcolor=couleurliens,linkcolor=couleurliens,citecolor=couleurliens]{hyperref} % Requis pour les liens et changer les options des liens
+\usepackage{microtype} % Ajuste légérements l'espacement des polices pour l'esthétique
+\usepackage{authoraftertitle} % Requis pour modification de la command \maketitle
+\usepackage{datetime} % Requis pour afficher la date dans le document
+\usepackage{pdfpages}
+\usepackage{listings}
+\usepackage[table]{xcolor}
+\usepackage{fancyhdr}
+\usepackage[absolute]{textpos}
+
+\makeatletter
+\renewcommand{\fnum@figure}{\textsc{\figurename~\thefigure}} % Met le texte "Figure 1.1" en capital minuscule
+\makeatother
+
+\definecolor{orange}{RGB}{230, 40, 0} % Définition couleur orange
+\definecolor{darkblue}{RGB}{0, 0, 30} % Définition couleur bleu foncé
+
+%----------------------------------------------------------------------------------------
+%	    INTEGRATION CODE
+%----------------------------------------------------------------------------------------
+
+\lstset{
+  literate=
+  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+  {À}{{\`A}}1 {È}{{\'E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+  {€}{{\EUR}}1 {£}{{\pounds}}1
+}
+
+\definecolor{darkWhite}{rgb}{0.96,0.96,0.96}
+ 
+\lstset{
+  aboveskip=3mm,
+  belowskip=-2mm,
+  backgroundcolor=\color{darkWhite},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,
+  breaklines=true,
+  captionpos=b,
+  commentstyle=\color{red},
+  deletekeywords={...},
+  escapeinside={\%*}{*)},
+  extendedchars=true,
+  framexleftmargin=16pt,
+  framextopmargin=3pt,
+  framexbottommargin=6pt,
+  frame=tb,
+  keepspaces=false,
+  keywordstyle=\color{blue},
+  language=C,
+  literate=
+  {²}{{\textsuperscript{2}}}1
+  {⁴}{{\textsuperscript{4}}}1
+  {⁶}{{\textsuperscript{6}}}1
+  {⁸}{{\textsuperscript{8}}}1
+  {€}{{\euro{}}}1
+  {é}{{\'e}}1
+  {è}{{\`{e}}}1
+  {ê}{{\^{e}}}1
+  {ë}{{\¨{e}}}1
+  {É}{{\'{E}}}1
+  {Ê}{{\^{E}}}1
+  {û}{{\^{u}}}1
+  {ù}{{\`{u}}}1
+  {â}{{\^{a}}}1
+  {à}{{\`{a}}}1
+  {á}{{\'{a}}}1
+  {ã}{{\~{a}}}1
+  {Á}{{\'{A}}}1
+  {Â}{{\^{A}}}1
+  {Ã}{{\~{A}}}1
+  {ç}{{\c{c}}}1
+  {Ç}{{\c{C}}}1
+  {õ}{{\~{o}}}1
+  {ó}{{\'{o}}}1
+  {ô}{{\^{o}}}1
+  {Õ}{{\~{O}}}1
+  {Ó}{{\'{O}}}1
+  {Ô}{{\^{O}}}1
+  {î}{{\^{i}}}1
+  {Î}{{\^{I}}}1
+  {í}{{\'{i}}}1
+  {Í}{{\~{Í}}}1,
+  morekeywords={*,...},
+  numbers=left,
+  numbersep=10pt,
+  numberstyle=\tiny\color{black},
+  rulecolor=\color{black},
+  showspaces=false,
+  showstringspaces=false,
+  showtabs=false,
+  stepnumber=1,
+  stringstyle=\color{gray},
+  tabsize=4,
+  title=\lstname,
+}
+
+%----------------------------------------------------------------------------------------
+%	    MISE EN PAGE
+%----------------------------------------------------------------------------------------
+
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry} % Modifie les marges du document
+
+%----------------------------------------------------------------------------------------
+%   EN-TÊTE
+%----------------------------------------------------------------------------------------
+
+\pagestyle{fancy}
+\renewcommand\headrulewidth{0.4pt}
+\fancyhead[CO]{\color{orange} \Large \textbf{Compte-Rendue\\\title}}
+\fancyhead[RO]{\scriptsize \color{darkblue} \textit{3\up{ème}~ANNÉE LICENCE INFORMATIQUE}\\
+\footnotesize \date\\
+\small \bfseries \author}
+
+%----------------------------------------------------------------------------------------
+%	   PAGE DE GARDE
+%----------------------------------------------------------------------------------------
+
+\renewcommand{\date}{2021-2022}
+\renewcommand{\title}{UE}
+\renewcommand{\author}{BELLIER Benjamin}
+
+\begin{document}
+%    INSERTION DE L'IMAGE EN HAUT À GAUCHE DE LA PAGE
+% -------------------------------------------------------------------------------------------------------------------------------
+  \begin{textblock*}{3cm}(1.5cm,4mm)
+    \begin{figure}[h]
+      \includegraphics[width=2.5cm]{/home/benny/Documents/LaTeX assets/Figures/UFR_IM2AG_2020.jpg}\\[.1cm] % Logo de l'institution
+    \end{figure}
+  \end{textblock*}
+% -------------------------------------------------------------------------------------------------------------------------------
+
+%---------------------------------------------------------------------------------
+%    TEXTE
+%---------------------------------------------------------------------------------
+
+
+
+\end{document}
